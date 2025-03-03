@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -60,4 +61,14 @@ public class PedidoService {
         }
     }
 
+
+    public Pedido findById(String id) {
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+
+        return pedidoOptional.orElse(null); // Retorna o pedido ou null se não encontrado
+    }
+
+    public List<Pedido> listAll() {
+        return pedidoRepository.findAll(); // Retorna todos os pedidos
+    }
 }
